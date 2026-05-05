@@ -1,0 +1,301 @@
+/* ---------- The device ---------- */
+
+.device-slot {
+  position: relative;
+  flex: none;
+}
+
+.device {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 421px;
+  height: 880px;
+  transform-origin: 0 0;
+  border-radius: 69px;
+  padding: 4px;
+  /* Natural titanium: light catching a brushed edge. */
+  background: linear-gradient(
+    135deg,
+    #b4b4b9 0%,
+    #e8e8eb 16%,
+    #8a8a90 38%,
+    #d8d8dc 60%,
+    #77777c 84%,
+    #c9c9cd 100%
+  );
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.3),
+    0 30px 60px -12px rgba(0, 0, 0, 0.35),
+    0 70px 120px -30px rgba(40, 30, 110, 0.4);
+}
+
+.device-bezel {
+  width: 100%;
+  height: 100%;
+  border-radius: 65px;
+  padding: 10px;
+  background: #000;
+  box-shadow: inset 0 0 0 1.5px #2a2a2c;
+}
+
+.device-button {
+  position: absolute;
+  width: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #7d7d83, #d4d4d8);
+}
+
+.device-action {
+  left: -3px;
+  top: 150px;
+  height: 32px;
+}
+
+.device-volume-up {
+  left: -3px;
+  top: 212px;
+  height: 62px;
+}
+
+.device-volume-down {
+  left: -3px;
+  top: 288px;
+  height: 62px;
+}
+
+.device-power {
+  right: -3px;
+  top: 252px;
+  height: 100px;
+  background: linear-gradient(270deg, #7d7d83, #d4d4d8);
+  transition: transform 100ms var(--ease-out);
+}
+
+/* A comfortable hit area around a 4px-wide button. */
+.device-power::before {
+  content: '';
+  position: absolute;
+  inset: -8px -14px -8px -6px;
+}
+
+.device-power:active:not(:disabled) {
+  transform: translateX(-1.5px);
+}
+
+.device-power:disabled {
+  cursor: default;
+}
+
+/* ---------- Screen ---------- */
+
+.screen {
+  --safe-top: 59px;
+  --safe-bottom: 34px;
+  position: relative;
+  width: 393px;
+  height: 852px;
+  border-radius: 55px;
+  overflow: hidden;
+  isolation: isolate;
+  background: #000;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.screen[data-fullscreen] {
+  --safe-top: max(env(safe-area-inset-top, 0px), 14px);
+  --safe-bottom: max(env(safe-area-inset-bottom, 0px), 10px);
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+}
+
+.screen {
+  container: screen / size;
+}
+
+/* Narrow phones: give the widget's text room instead of wrapping every line. */
+@container screen (max-width: 360px) {
+  .widget-photo {
+    width: 96px;
+    height: 96px;
+  }
+  .widget-name {
+    font-size: 18px;
+  }
+}
+
+/* Content people may want to copy stays selectable. */
+.window-content :is(p, h2, h3, .row-title, .chip, .paper) {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+/* ---------- Wallpaper ---------- */
+
+.wallpaper {
+  position: absolute;
+  inset: 0;
+  z-index: 0; /* own stacking context, so the dim layer never covers the icons */
+  background:
+    radial-gradient(60% 42% at 16% 10%, #6b5cff 0%, rgba(107, 92, 255, 0) 70%),
+    radial-gradient(52% 38% at 92% 26%, #ff7a45 0%, rgba(255, 122, 69, 0) 70%),
+    radial-gradient(70% 46% at 78% 90%, #c13cff 0%, rgba(193, 60, 255, 0) 70%),
+    radial-gradient(60% 42% at 4% 78%, #11b3c8 0%, rgba(17, 179, 200, 0) 70%),
+    linear-gradient(180deg, #0d1030 0%, #1b1040 52%, #0a0a1e 100%);
+}
+
+/* Grain keeps the gradients from banding. */
+.wallpaper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.16;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.wallpaper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: #000;
+  opacity: var(--wallpaper-dim);
+  transition: opacity 300ms ease;
+}
+
+/* ---------- Status bar & island ---------- */
+
+.status-bar {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 59px;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1fr 126px 1fr;
+  align-items: center;
+  color: #fff;
+  pointer-events: none;
+  transition: color 250ms ease;
+}
+
+.status-bar[data-tone='auto'] {
+  color: var(--label);
+}
+
+.screen[data-card] .status-bar {
+  color: #fff;
+}
+
+.status-time {
+  justify-self: center;
+  padding-left: 18px;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  transition: opacity 200ms ease;
+}
+
+.status-time[data-hidden] {
+  opacity: 0;
+}
+
+.status-icons {
+  grid-column: 3;
+  justify-self: center;
+  padding-right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.island-anchor {
+  position: absolute;
+  top: 11px;
+  left: 0;
+  right: 0;
+  z-index: 11;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.island {
+  width: 126px;
+  height: 37px;
+  background: #000;
+  color: #fff;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.island[data-expanded] {
+  width: calc(100% - 22px);
+  height: 74px;
+}
+
+.island-floating {
+  position: absolute;
+  top: calc(env(safe-area-inset-top, 0px) + 8px);
+  left: 50%;
+  z-index: 11;
+  width: min(360px, calc(100% - 24px));
+  height: 68px;
+  border-radius: 34px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.island-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 18px;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.island-icon {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: #0a84ff;
+}
+
+.island-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.island-title {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.island-detail {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---------- Glass ---------- */
+
+.glass {
+  background: rgba(255, 255, 255, 0.15);
+  -webkit-backdrop-filter: blur(24px) saturate(170%);
+  backdrop-filter: blur(24px) saturate(170%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.34),
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.16),
+    0 10px 30px rgba(0, 0, 0, 0.16);
+}
+

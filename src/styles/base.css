@@ -186,3 +186,111 @@ kbd {
   background: color-mix(in srgb, var(--desk-bg) 60%, white 10%);
 }
 
+/* ---------- The desk (laptop / desktop) ---------- */
+
+.desk {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 56px;
+  padding: 28px 16px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.desk-glow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(40% 50% at 50% 40%, rgba(94, 92, 230, 0.22), transparent 70%),
+    radial-gradient(30% 40% at 58% 70%, rgba(255, 122, 69, 0.14), transparent 70%),
+    radial-gradient(30% 40% at 42% 65%, rgba(48, 176, 199, 0.12), transparent 70%);
+  pointer-events: none;
+}
+
+.desk-side {
+  max-width: 300px;
+}
+
+.desk-intro {
+  justify-self: end;
+}
+
+.desk-hints {
+  justify-self: start;
+}
+
+.desk-kicker {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--desk-text-2);
+  margin-bottom: 10px;
+}
+
+.desk-name {
+  font-size: 40px;
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 14px;
+  text-wrap: balance;
+}
+
+.desk-lead {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--desk-text-2);
+  text-wrap: pretty;
+}
+
+.desk-links {
+  display: flex;
+  gap: 18px;
+  margin-top: 20px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.desk-links a {
+  color: var(--desk-text);
+  transition: color 160ms ease;
+}
+
+.desk-hints dl {
+  margin: 0;
+  display: grid;
+  gap: 18px;
+}
+
+.desk-hints dt {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.desk-hints dd {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--desk-text-2);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .desk-links a:hover {
+    color: var(--blue);
+  }
+}
+
+@media (max-width: 1100px) {
+  .desk {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  .desk-side {
+    display: none;
+  }
+}
+
