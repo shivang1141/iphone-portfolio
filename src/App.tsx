@@ -1,6 +1,6 @@
 import { Desk } from './components/Desk';
+import { HomeScreen } from './components/HomeScreen';
 import { StatusBar } from './components/StatusBar';
-import { Wallpaper } from './components/Wallpaper';
 import { DEVICE, useDeviceScale } from './lib/hooks';
 
 export default function App() {
@@ -9,7 +9,7 @@ export default function App() {
   return (
     <Desk scale={scale} device={DEVICE} onSideButton={() => {}} locked={false}>
       <div className="screen">
-        <Wallpaper />
+        <HomeScreen entered inert={false} onOpen={(id) => console.log('open', id)} />
         <StatusBar tone="light" />
       </div>
     </Desk>

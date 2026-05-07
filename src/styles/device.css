@@ -299,3 +299,240 @@
     0 10px 30px rgba(0, 0, 0, 0.16);
 }
 
+/* ---------- Home screen ---------- */
+
+.home {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  color: #fff;
+}
+
+/* The wallpaper settles back as the phone unlocks — a hint of depth. */
+.home .wallpaper {
+  transform: scale(1.1);
+  transition: transform 800ms var(--ease-out);
+}
+
+.home[data-entered] .wallpaper {
+  transform: none;
+}
+
+.home-grid {
+  position: absolute;
+  top: calc(var(--safe-top) + 14px);
+  left: 0;
+  right: 0;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 62px);
+  justify-content: space-between;
+  row-gap: 18px;
+  transform-origin: 50% 0;
+}
+
+.icon {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 62px;
+}
+
+.icon-art {
+  flex: none;
+  display: grid;
+  place-items: center;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.08),
+    0 2px 10px rgba(0, 0, 0, 0.16);
+  transition:
+    transform 160ms var(--ease-out),
+    filter 160ms ease;
+}
+
+.icon:active .icon-art {
+  transform: scale(0.95);
+  filter: brightness(0.8);
+}
+
+.icon-label {
+  max-width: 78px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* The icon that became the window steps out of the grid while the app is up. */
+[data-launching] {
+  opacity: 0;
+}
+
+.widget-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.widget-medium {
+  grid-column: 1 / -1;
+}
+
+.widget-small {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.widget {
+  display: flex;
+  width: 100%;
+  height: 158px;
+  padding: 14px;
+  border-radius: 24px;
+  color: #fff;
+  text-align: left;
+  transition: transform 200ms var(--ease-out);
+}
+
+.widget:active {
+  transform: scale(0.97);
+}
+
+.widget-medium .widget {
+  align-items: center;
+  gap: 14px;
+}
+
+.widget-photo {
+  flex: none;
+  width: 124px;
+  height: 124px;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.widget-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.widget-name {
+  font-size: 21px;
+  line-height: 1.12;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.widget-role {
+  font-size: 14px;
+  opacity: 0.85;
+  margin-bottom: 8px;
+}
+
+.widget-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0.78;
+}
+
+.widget-stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.widget-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.widget-stat-value {
+  font-size: 21px;
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.widget-stat-label {
+  font-size: 11px;
+  font-weight: 500;
+  opacity: 0.75;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dock {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  height: 92px;
+  padding: 0 16px;
+  border-radius: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.screen[data-fullscreen] .dock {
+  bottom: var(--safe-bottom);
+}
+
+.screen[data-fullscreen] .home-grid {
+  padding: 0 max(20px, 6vw);
+}
+
+/* Unlock: icons settle in from slightly larger, staggered. Rare, so it gets the delight budget. */
+.home:not([data-entered]) :is(.home-grid > *, .dock > *) {
+  opacity: 0;
+}
+
+.home[data-entered] :is(.home-grid > *, .dock > *) {
+  animation: icon-in 520ms var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 28ms);
+}
+
+@keyframes icon-in {
+  from {
+    opacity: 0;
+    transform: scale(1.16);
+  }
+}
+
+.home-indicator {
+  display: block;
+  width: 139px;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--label);
+}
+
+.home-indicator-light {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  z-index: 3;
+  transform: translateX(-50%);
+  background: #fff;
+}
+
+.screen[data-fullscreen] .home-indicator-light {
+  display: none;
+}
+
