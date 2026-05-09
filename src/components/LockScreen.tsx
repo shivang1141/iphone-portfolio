@@ -64,7 +64,7 @@ export function LockScreen({ height, scale, enterFromTop, reduceMotion, onEntere
     const d = drag.current;
     if (!d || d.id !== e.pointerId) return;
     const dy = (e.clientY - d.startY) / scale;
-    if (!d.moved && Math.abs(dy) < 4) return; // hysteresis before committing to a drag
+    if (!d.moved && Math.abs(dy) < 10) return; // hysteresis before committing to a drag
     d.moved = true;
     // Up tracks 1:1; down resists like iOS.
     y.set(dy < 0 ? dy : rubberband(dy, height));
