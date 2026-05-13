@@ -493,3 +493,105 @@
   color: var(--label-2);
 }
 
+/* ---------- Experience & Education ---------- */
+
+.job {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.job-card,
+.school-card {
+  padding: 18px 0 6px;
+  border-radius: 22px;
+  background: var(--bg-elevated);
+}
+
+.school-card {
+  padding-bottom: 18px;
+}
+
+.job-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 16px;
+}
+
+.job-logo,
+.school-mark {
+  flex: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.job-logo {
+  font-size: 19px;
+  background: linear-gradient(180deg, #5fd068 0%, #2e9e46 100%);
+}
+
+.school-mark {
+  margin-left: 16px;
+  font-size: 16px;
+}
+
+.job-heading {
+  min-width: 0;
+}
+
+.job-title,
+.school-name {
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+}
+
+.job-company {
+  margin-top: 2px;
+  font-size: 15px;
+  color: var(--label-2);
+}
+
+.job-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  padding: 12px 16px 0;
+  font-size: 14px;
+  color: var(--label-2);
+}
+
+.job-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.job-card .prose {
+  padding-top: 10px;
+}
+
+.school-name {
+  padding: 14px 16px 0;
+}
+
+.school-degree {
+  padding: 4px 16px 0;
+  font-size: 16px;
+}
+
+.school-minor {
+  padding: 2px 16px 0;
+  font-size: 15px;
+  color: var(--label-2);
+}
+
