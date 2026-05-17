@@ -1,0 +1,47 @@
+/* Printing (the Resume app's printer button, or Ctrl+P anywhere) produces a clean resume. */
+
+.print-only {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: letter;
+    margin: 0.5in;
+  }
+
+  body {
+    background: #fff !important;
+  }
+
+  #root {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block;
+  }
+
+  .print-only .paper {
+    padding: 0;
+    box-shadow: none;
+    border-radius: 0;
+    font-size: 10pt;
+  }
+
+  .print-only .paper h2 {
+    font-size: 20pt;
+  }
+
+  .print-only .paper-head p {
+    font-size: 9.5pt;
+  }
+
+  .print-only .paper h3 {
+    font-size: 10pt;
+  }
+
+  .print-only .paper-item {
+    break-inside: avoid;
+  }
+}

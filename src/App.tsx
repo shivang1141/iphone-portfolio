@@ -4,6 +4,7 @@ import { About } from './apps/About';
 import { Education } from './apps/Education';
 import { Experience } from './apps/Experience';
 import { Projects } from './apps/Projects';
+import { PrintableResume, Resume } from './apps/Resume';
 import { Skills } from './apps/Skills';
 import { AppWindow } from './components/AppWindow';
 import { Desk } from './components/Desk';
@@ -29,7 +30,7 @@ const screens: Record<AppId, () => ReactNode> = {
   experience: () => <Experience />,
   projects: () => <Projects />,
   skills: () => <Skills />,
-  resume: () => null,
+  resume: () => <Resume />,
   education: () => <Education />,
   messages: () => null,
   settings: () => null,
@@ -298,6 +299,7 @@ export default function App() {
             {screen}
           </Desk>
         )}
+        <PrintableResume />
       </MotionConfig>
     </OSContext.Provider>
   );
