@@ -3,6 +3,7 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, typ
 import { About } from './apps/About';
 import { Education } from './apps/Education';
 import { Experience } from './apps/Experience';
+import { Messages } from './apps/Messages';
 import { Projects } from './apps/Projects';
 import { PrintableResume, Resume } from './apps/Resume';
 import { Skills } from './apps/Skills';
@@ -32,7 +33,7 @@ const screens: Record<AppId, () => ReactNode> = {
   skills: () => <Skills />,
   resume: () => <Resume />,
   education: () => <Education />,
-  messages: () => null,
+  messages: () => <Messages />,
   settings: () => null,
 };
 
