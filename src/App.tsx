@@ -9,6 +9,7 @@ import { PrintableResume, Resume } from './apps/Resume';
 import { Skills } from './apps/Skills';
 import { AppWindow } from './components/AppWindow';
 import { Desk } from './components/Desk';
+import { DynamicIsland } from './components/DynamicIsland';
 import { HomeScreen } from './components/HomeScreen';
 import { LockScreen } from './components/LockScreen';
 import { StatusBar } from './components/StatusBar';
@@ -287,6 +288,7 @@ export default function App() {
       {!fullscreen && (
         <StatusBar tone={appOpen && lock === 'open' ? 'auto' : 'light'} hideTime={lock === 'locked'} />
       )}
+      <DynamicIsland note={note} fullscreen={fullscreen} />
     </div>
   );
 
