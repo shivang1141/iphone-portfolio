@@ -1051,3 +1051,61 @@
   transform: scale(0.9);
 }
 
+/* ---------- Settings ---------- */
+
+.account-photo {
+  flex: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.account-row {
+  min-height: 84px;
+}
+
+.account-name {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.made-with {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 13px;
+  color: var(--label-2);
+}
+
+.made-with svg {
+  color: #ff375f;
+}
+
+/* ---------- Reduced motion ---------- */
+
+:root[data-reduce-motion] :is(.bubble, .bubble-cards) {
+  animation-name: fade-in;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.bubble, .bubble-cards) {
+    animation-name: fade-in;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  :is(.navbar-material, .glass-button, .composer-field) {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: var(--bg-elevated);
+  }
+}
+
+:root[data-reduce-transparency] :is(.navbar-material, .glass-button, .composer-field) {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  background: var(--bg-elevated);
+}

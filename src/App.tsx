@@ -6,6 +6,7 @@ import { Experience } from './apps/Experience';
 import { Messages } from './apps/Messages';
 import { Projects } from './apps/Projects';
 import { PrintableResume, Resume } from './apps/Resume';
+import { Settings } from './apps/Settings';
 import { Skills } from './apps/Skills';
 import { AppWindow } from './components/AppWindow';
 import { Desk } from './components/Desk';
@@ -35,7 +36,7 @@ const screens: Record<AppId, () => ReactNode> = {
   resume: () => <Resume />,
   education: () => <Education />,
   messages: () => <Messages />,
-  settings: () => null,
+  settings: () => <Settings />,
 };
 
 type Win = { id: AppId; origin: Rect; phase: 'open' | 'closing'; key: number; source: HTMLElement | null };

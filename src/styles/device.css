@@ -735,3 +735,43 @@
   bottom: max(env(safe-area-inset-bottom, 0px) - 10px, 0px);
 }
 
+/* ---------- Accessibility ---------- */
+
+:root[data-reduce-transparency] :is(.glass, .glass-pill) {
+  background: rgba(36, 34, 52, 0.94);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  :is(.glass, .glass-pill) {
+    background: rgba(36, 34, 52, 0.94);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+:root[data-reduce-motion] .home[data-entered] :is(.home-grid > *, .dock > *) {
+  animation-name: fade-in;
+}
+
+:root[data-reduce-motion] .home .wallpaper {
+  transform: none;
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home[data-entered] :is(.home-grid > *, .dock > *) {
+    animation-name: fade-in;
+  }
+  .home .wallpaper {
+    transform: none;
+    transition: none;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
