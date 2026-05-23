@@ -294,3 +294,12 @@ kbd {
   }
 }
 
+/* ---------- Fullscreen (a real phone) ---------- */
+
+.fullscreen {
+  position: fixed;
+  inset: 0;
+  height: 100dvh;
+  overflow: hidden;
+  background: #000;
+}
