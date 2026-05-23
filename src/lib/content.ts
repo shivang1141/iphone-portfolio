@@ -19,7 +19,7 @@ export const profile = {
 
 export const about = {
   origins:
-    'My interest in technology started in high school with a programming class, sparkng a passion for problem-solving that led me to study Computer Science at UMass Lowell and pursue a Master’s in Artificial Intelligence at UT Austin.',
+    'My interest in technology started in high school with a programming class, sparking a passion for problem-solving that led me to study Computer Science at UMass Lowell and pursue a Master’s in Artificial Intelligence at UT Austin.',
   philosophy:
     'I approach every project with a focus on clarity, scalability, and impact. I believe great software is intuitive, maintainable, and built to last. I write clean, modular code, design user-first interfaces, and continually learn new technologies to create meaningful, high-performance experiences.',
 };
