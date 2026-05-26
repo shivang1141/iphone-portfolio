@@ -82,12 +82,12 @@ export function useBackHandler(handler: () => void, active: boolean) {
   }, [active]);
 }
 
-const KEY = 'sp-phone-settings';
+const STORAGE_KEY = 'sp-phone-settings';
 
 export function loadSettings(): Settings {
   const fallback: Settings = { theme: 'auto', reduceMotion: false, reduceTransparency: false };
   try {
-    const raw = localStorage.getItem(KEY);
+    const raw = localStorage.getItem(STORAGE_KEY);
     return raw ? { ...fallback, ...JSON.parse(raw) } : fallback;
   } catch {
     return fallback;
@@ -96,7 +96,7 @@ export function loadSettings(): Settings {
 
 export function saveSettings(settings: Settings) {
   try {
-    localStorage.setItem(KEY, JSON.stringify(settings));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(settings));
   } catch {
     // Private mode or blocked storage: settings just won't persist.
   }
