@@ -457,11 +457,11 @@
   top: calc(var(--safe-top) + 14px);
   left: 0;
   right: 0;
-  padding: 0 20px;
+  padding: 0 24px;
   display: grid;
   grid-template-columns: repeat(4, 62px);
   justify-content: space-between;
-  row-gap: 18px;
+  row-gap: 22px;
   transform-origin: 50% 0;
 }
 
